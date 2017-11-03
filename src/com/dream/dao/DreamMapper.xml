@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dream.dao.DreamMapper">
+	
+   
+   <select id="queryDream" parameterType="com.dream.util.Page" resultType="dream">
+      select * from dream order by createTime desc limit #{startPos},#{pageSize}
+   </select>
+ 
+ 
+   <insert id="addDream"  parameterType="dream">
+   
+   insert into   dream  (mess,createtime,userid) values(#{mess},now(),#{userid})
+   
+   </insert>
+   
+   <select id="getCount" resultType="int">
+   select count(*) from dream
+   </select>
+  
+  <select id="getDreamById" resultType="dream" parameterType="int">
+   select  * from  dream  where id=#{id}
+   </select>
+  
+  
+</mapper> 
